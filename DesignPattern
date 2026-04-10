@@ -1,0 +1,139 @@
+Behevour Desing Pattern :
+=========================
+1.Chain of Responsbility Design Pattern :
+------------------------------------------
+Application Usage:
+-----------------
+Imagine a customer support system where customer requests need to be handled based
+ on their priority. There are three levels of support: Level 1, Level 2, and Level 3.
+  Level 1 support handles basic requests, Level 2 support handles more complex requests, 
+  and Level 3 support handles critical issues that cannot be resolved by Level 1
+   or Level 2.
+   
+1.In graphical user interfaces (GUIs): events like mouse clicks or key presses can be 
+handled by a chain of listeners. Each listener checks if it can handle the event,
+ passing it along the chain if it can’t. This way, multiple components can respond
+  to the same event without being tightly linked.
+  
+2.In logging systems, you might have different levels of loggers (like INFO, WARN, 
+ERROR). Each logger can handle specific log messages. If one logger can’t process a
+ message (for example, if it’s below its level) it passes it to the next logger in 
+ the chain.
+ 
+3.In security systems, access requests can be processed by a series of handlers that
+ check permissions. For instance, one handler might check user roles, while another
+  checks specific permissions. If one handler denies access, it can pass the request 
+  to the next handler for further evaluation.
+  
+ 2.Command Desing Pattern :
+ ==============================
+Imagine you are tasked with designing a remote control system for various electronic
+devices in a smart home. The devices include a TV, a stereo, and potentially other
+appliances. The goal is to create a flexible remote control that can handle different
+types of commands for each device, such as turning devices on/off, adjusting settings,
+or changing channels.
+
+1.Home Automation System:
+=========================================
+Use Case: Home automation systems (e.g., Alexa, Google Home) require executing various device commands, such as turning lights on/off, adjusting thermostats, or locking doors.
+How the Command Pattern Fits: Each command can represent a specific device action (e.g., TurnOnLightCommand, SetThermostatCommand). These can be stored, executed, or even undone if a reversal is needed.
+Example: If a user says "Turn on all lights," the system can create and execute multiple TurnOnLightCommand instances for each light in the house, making the system modular and extensible.
+
+2.Order Management in E-commerce Applications:
+------------------------------------------------
+Use Case: In e-commerce systems, users can perform various operations on orders (e.g., place order, cancel order, refund).
+How the Command Pattern Fits: Each order operation (e.g., PlaceOrderCommand, CancelOrderCommand) can be encapsulated as a command. This is helpful for implementing functionality like order cancellations or refunds, and it ensures the actions can be easily logged or processed asynchronously.
+Example: When a user places an order, a PlaceOrderCommand can be created and processed by the system. If the user cancels the order, a CancelOrderCommand can be executed.
+
+3.Interrupt Design Pattern :
+==================================
+Suppose we have a simple language that supports basic arithmetic operations, 
+such as addition (+), subtraction (-), multiplication (*), and division (/). 
+We want to create a calculator program that can interpret and evaluate arithmetic 
+expressions written in this language.
+
+Imagine you are traveling to a foreign country where you do not speak the native
+language. In such a scenario, you may need the assistance of an interpreter to help
+you communicate effectively with the locals.
+
+Use Case :
+--------------
+1.Dynamic Query Building for Search Filters:When your application requires complex 
+search filters that can vary per user input, the Interpreter pattern can be used to
+parse and interpret a query language or DSL for filtering data. For example,
+users could pass a filter like "age > 30 AND name = 'John'", which would be parsed
+and interpreted as a database query.
+
+2. Expression Evaluation in Business Rules:In enterprise applications, business rules
+ often vary based on context. For instance, a discount application could use the 
+ Interpreter pattern to interpret discount rules dynamically. These rules could be 
+ expressed in a custom language or expression format and then interpreted by the 
+ application at runtime.
+
+3. Processing Workflow Expressions: In workflow-based applications, processes are 
+often defined with specific sequences of actions that could be expressed in a DSL
+or as condition-based expressions. The Interpreter pattern allows these expressions
+to be parsed and executed as workflow steps.
+
+4.Iterator DP:
+-----------------
+Let’s say we have a collection of employees in a company, and we want to iterate
+over the employees to calculate their total salary. However, the employees are stored
+in different types of collections (arrays, lists, etc.), and we want to iterate over
+them without exposing the underlying collection types.
+ 
+ Use Case :
+ -------
+ 1. Traversing Collections in a Uniform Way:: The Iterator pattern is ideal for any
+application that works with collections of data but shouldn't have to know about 
+the specific data structure. For instance, if you have an application that processes
+ different types of collections (like lists, sets, and trees), using the Iterator
+  pattern lets you access the elements without needing to understand how each 
+  collection is implemented.
+
+2. Building Custom Iterators for Complex Data Structures::When working with complex
+ data structures, such as binary trees or graphs, standard collection iterators are
+  insufficient. By implementing a custom iterator, you can define specific traversal
+   strategies (e.g., in-order, pre-order, post-order for trees) while keeping 
+   traversal logic separate from the data structure itself.
+
+3. Implementing a "History" Feature::Many applications, like web browsers or media
+ players, use an iterator to manage and navigate through a history of actions or
+  pages. The Iterator pattern can be used to traverse forward and backward through
+   the history stack without exposing internal details of the history storage.
+
+4. File System Directory Traversal: In applications that deal with file systems, 
+such as file explorers, an iterator can abstract how directories and files are 
+traversed. Using an iterator, you can implement custom traversal methods, 
+like recursive directory scanning, without exposing the directory structure 
+implementation.
+
+5. Mediator Design Pattern :
+---------------------------------
+In an airport, there are multiple airplanes that need to communicate and coordinate their movements to avoid 
+collisions and ensure safe take offs and landings. Without a centralized system, direct communication between 
+airplanes could lead to chaos and increased risk.
+ 
+ 
+6.Observer Design Pattern :
+=============================
+magine a scenario where a weather station is observed by various smart devices. The weather station maintains
+ a list of registered devices. Weather Station will update all the devices whenver there is change in the
+  weather.
+
+
+7.Template Method Design Pattern :
+=================================
+1.Order of Operations: In the workflow system, we might have a template method that represents the overall process of handling a request. Subclasses can then override specific steps like validation, authorization, and execution while keeping the order of operations intact.
+2.Code Reuse: In GUI frameworks, we could have a template method that outlines the process of rendering a UI component. Subclasses can then specialize in rendering specific types of components (e.g., buttons, text fields) while inheriting common behavior.
+3.Database Access: In a database access library, we have the template method that represents the process of connecting to a database, executing a query, and closing the connection. Subclasses can provide specific implementations for different database systems.
+4.Game Development: In the game development, a template method can define the overall game loop structure. Subclasses can then override specific steps like updating game logic, rendering graphics, and handling user input.
+5.Logging Frameworks: In a logging framework, we have a template method that defines the process of logging information. Subclasses can provide specific implementations for logging to different destinations (e.g., console, file, database).
+6.Document Generation: In a document generation system, we can use the template method for creating different types of documents (e.g., PDF, HTML). Subclasses can override steps like content generation and formatting while inheriting common document creation logic.
+7.Web Frameworks: In a web framework, a template method can define the structure of handling HTTP requests. Subclasses can then provide specific implementations for routing, authentication, and request handling.
+  
+  
+
+ 
+  
+  

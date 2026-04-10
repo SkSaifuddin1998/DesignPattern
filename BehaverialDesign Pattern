@@ -1,0 +1,106 @@
+Types of Behavioral Design Patterns
+
+Here are the most commonly used ones:
+
+1. Chain of Responsibility :
+============================
+Passes a request along a chain of handlers.
+Each handler decides whether to process it or pass it.
+
+👉 Example: Approval system (Manager → Director → CEO)
+
+2. Command  :
+==================
+Encapsulates a request as an object.
+Allows parameterization of clients with different requests.
+
+👉 Example: Remote control (buttons mapped to commands)
+
+You can relate this to:
+
+Spring Boot Controllers → Services (loosely similar flow)
+Message Queues (Kafka, RabbitMQ) → commands as events
+Transaction systems → retry/rollback
+Job schedulers → execute commands later
+
+Key Components
+--------------------
+Command (Interface) → declares execution
+Concrete Command → implements action
+Receiver → actual business logic
+Invoker → triggers command
+Client → sets everything
+
+3. Interpreter
+==================
+Defines grammar for a language and interprets sentences.
+
+👉 Example: SQL parser, expression evaluator
+
+4. Iterator 
+==================
+Provides a way to access elements of a collection sequentially.
+
+👉 Example: Java Iterator interface
+
+5. Mediator
+===================
+Reduces direct communication between objects.
+Objects communicate via a mediator.
+
+👉 Example: Chat room system
+
+6. Memento
+=================
+Saves and restores object state without exposing details.
+
+👉 Example: Undo/Redo functionality
+
+7. Observer
+===============
+One-to-many dependency between objects.
+When one object changes, all dependents are notified.
+
+👉 Example: Event listeners, Notification system
+
+8. State
+==============
+Object behavior changes based on its internal state.
+
+👉 Example: ATM machine states
+
+9. Strategy
+===============
+Defines a family of algorithms and makes them interchangeable.
+
+👉 Example: Payment methods (Credit Card, UPI, Cash)
+
+10. Template Method
+===============
+Defines skeleton of an algorithm, subclasses override steps.
+
+👉 Example: Abstract class with common workflow
+
+11. Visitor
+=================
+Adds new operations to objects without modifying them.
+
+👉 Example: Compiler operations on AST
+
+🔹 Real-Life Example
+
+============================
+Think of a food delivery app:
+
+Strategy → different payment options
+Observer → order status updates
+Chain of Responsibility → order approval system
+Command → placing/canceling orders
+
+
+🔹 Advantages
+
+✔ Loose coupling between objects
+✔ Easier communication management
+✔ Improves flexibility and scalability
+✔ Promotes reusable code
