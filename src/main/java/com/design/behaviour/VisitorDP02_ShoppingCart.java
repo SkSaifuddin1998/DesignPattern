@@ -9,8 +9,6 @@ interface CartVisitor {
 // Step 2: Define classes for different items in the cart
 class Book {
     private double price;
-    // Constructor and getters
-    
     public double accept(CartVisitor visitor) {
         return visitor.visit(this);
     }
@@ -28,8 +26,6 @@ class Book {
 
 class Electronics {
     private double price;
-    // Constructor and getters
-    
     public double accept(CartVisitor visitor) {
         return visitor.visit(this);
     }
@@ -48,48 +44,38 @@ class Electronics {
 }
 
 class Clothing {
-    private double price;
-    
-    /**
-	 * @param price
-	 */
+	private double price;
+	public double accept(CartVisitor visitor) {
+		return visitor.visit(this);
+	}
 	public Clothing(double price) {
 		super();
 		this.price = price;
 	}
-
 	public double getPrice() {
 		return price;
 	}
-
 	public void setPrice(double price) {
 		this.price = price;
 	}
 
-	// Constructor and getters
-    public double accept(CartVisitor visitor) {
-        return visitor.visit(this);
-    }
-    
 }
 
 // Step 3: Implement specific Visitor
 class DiscountVisitor implements CartVisitor {
+	
     @Override
     public double visit(Book book) {
-        // Apply specific discount for books
         return book.getPrice() * 0.90; // 10% discount
     }
 
     @Override
     public double visit(Electronics electronics) {
-        // Apply specific discount for electronics
         return electronics.getPrice() * 0.85; // 15% discount
     }
 
     @Override
     public double visit(Clothing clothing) {
-        // Apply specific discount for clothing
         return clothing.getPrice() * 0.80; // 20% discount
     }
 }

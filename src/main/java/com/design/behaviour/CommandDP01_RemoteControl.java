@@ -64,7 +64,6 @@ class ChangeChannelCommand implements Command {
 
 interface Device {
 	void turnOn();
-
 	void turnOff();
 }
 
@@ -119,6 +118,7 @@ class RemoteController {
 public class CommandDP01_RemoteControl {
 
 	public static void main(String[] args) {
+		
 		TV tv=new TV();
 		Stero stero=new Stero();
 		

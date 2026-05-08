@@ -3,7 +3,6 @@ package com.design.behaviour;
 // Mediator Interface
 interface AirTrafficControlTower {
 	void requestTakeoff(Airplane airplane);
-
 	void requestLanding(Airplane airplane);
 }
 
@@ -24,29 +23,23 @@ class AirportControlTower implements AirTrafficControlTower {
 // Colleague Interface
 interface Airplane {
 	void requestTakeoff();
-
 	void requestLanding();
-
 	void notifyAirTrafficControl(String message);
 }
 
 class CommercialAirplane implements Airplane {
 	private AirTrafficControlTower mediator;
-
 	public CommercialAirplane(AirTrafficControlTower mediator) {
 		this.mediator = mediator;
 	}
-
 	@Override
 	public void requestTakeoff() {
 		mediator.requestTakeoff(this);
 	}
-
 	@Override
 	public void requestLanding() {
 		mediator.requestLanding(this);
 	}
-
 	@Override
 	public void notifyAirTrafficControl(String message) {
 		System.out.println("Commercial Airplane: " + message);

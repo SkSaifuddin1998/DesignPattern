@@ -15,7 +15,6 @@ interface Observer {
 class PhoneDisplay implements Observer {
 
 	private String weather;
-
 	@Override
 	public void update(String weather) {
 		this.weather = weather;
@@ -30,7 +29,6 @@ class PhoneDisplay implements Observer {
 class TVDisplay implements Observer {
 
 	private String weather;
-
 	@Override
 	public void update(String weather) {
 		this.weather = weather;
@@ -46,9 +44,7 @@ class TVDisplay implements Observer {
 //Subject Interface
 interface Subject {
 	void addObserver(Observer observer);
-
 	void removeObserver(Observer observer);
-
 	void notifyObservers();
 }
 
